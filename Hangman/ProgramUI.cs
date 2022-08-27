@@ -1,8 +1,8 @@
 public class ProgramUI
 {
 
-    string[]? blankGameArr = null;
-    string[]? gameArr = null;
+    string[] blankGameArr = null;
+    string[] gameArr = null;
     int numInWord = 0;
     bool gameRunning = true;
     int bodyHungCount = 0;
@@ -16,14 +16,12 @@ public class ProgramUI
     {
         Console.Clear();
 
-        string[] words = { "compete", "sector", "explain", "passage", "inflate", "patient", "pillow" };
+        string[] words = { "cherry", "apple", "blueberry", "pumpkin", "peanutbutter", "rhubarb" };
 
         Random rand = new Random();
-        int wordNum = rand.Next(0, 7);
-        System.Console.WriteLine($"Int wordNum = {wordNum}"); // For testing only, get rid of for final code
+        int wordNum = rand.Next(0, 6); // .Next(min int{included in range}, max int{NOT included in range} )
 
         string gameWord = words[wordNum];
-        // string gameWord = "pillow";
 
         // changes string array to match the number of letters in char array
         Array.Resize(ref gameArr, gameWord.Length);
@@ -43,8 +41,8 @@ public class ProgramUI
         while (gameRunning)
         {
 
-            System.Console.WriteLine("Guess a letter:");
-            string userGuess = Console.ReadLine();
+            System.Console.WriteLine("\nGuess a letter: ");
+            string userGuess = Console.ReadLine().ToLower();
 
             CheckForLetter(userGuess, gameArr);
         }
@@ -69,6 +67,7 @@ public class ProgramUI
                 Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Left arm added");
                 Console.ForegroundColor = ConsoleColor.White;
+                System.Console.WriteLine("\n(hint: types of pie)\n");
                 break;
             case 4:
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -110,10 +109,7 @@ public class ProgramUI
 
     public void CheckForLetter(string guess, string[] arr)
     {
-        bool incorrectAnswer = true;
         int incorrectGuess = 0;
-        // while (incorrectAnswer)
-        // {
         for (int i = 0; i < arr.Length; i++)
         {
             if (arr[i] == guess && blankGameArr[i] == "_")
@@ -141,24 +137,27 @@ public class ProgramUI
             Console.Clear();
 
             BlankDisplay();
+            Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine("\nCongrats you got the word!");
+            Console.ForegroundColor = ConsoleColor.White;
             gameRunning = false;
         }
         else
         {
             BlankDisplay();
         }
-
-        incorrectAnswer = false;
-        // }
     }
     public void CorrectAnswer()
     {
+        Console.ForegroundColor = ConsoleColor.Green;
         System.Console.WriteLine("Correct Guess!");
+        Console.ForegroundColor = ConsoleColor.White;
     }
     public void IncorrectAnswer()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         System.Console.WriteLine("Sorry! wrong answer");
+        Console.ForegroundColor = ConsoleColor.White;
         bodyHungCount++;
         DisplayBody(bodyHungCount);
     }
