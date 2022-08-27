@@ -5,10 +5,10 @@ public class ProgramUI
     string[]? gameArr = null;
     int numInWord = 0;
     bool gameRunning = true;
+    int bodyHungCount = 0;
 
     public void Run()
     {
-        // DisplayBody();
         Game();
     }
 
@@ -51,11 +51,49 @@ public class ProgramUI
 
     }
 
-    public void DisplayBody()
+    public void DisplayBody(int hangmanBody)
     {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.ForegroundColor = ConsoleColor.Red;
-
+        switch (hangmanBody)
+        {
+            case 1:
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Head added");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
+            case 2:
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Torso added");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
+            case 3:
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Left arm added");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
+            case 4:
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Right arm added");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
+            case 5:
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Left leg added");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
+            case 6:
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Right leg added");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
+            case 7:
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Game Over...");
+                Console.ForegroundColor = ConsoleColor.White;
+                gameRunning = false;
+                break;
+            default:
+                break;
+        }
     }
 
     public void BlankDisplay()
@@ -121,6 +159,8 @@ public class ProgramUI
     public void IncorrectAnswer()
     {
         System.Console.WriteLine("Sorry! wrong answer");
+        bodyHungCount++;
+        DisplayBody(bodyHungCount);
     }
 
 }
