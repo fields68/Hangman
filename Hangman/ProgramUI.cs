@@ -3,21 +3,27 @@ public class ProgramUI
 
     string[]? blankGameArr = null;
     string[]? gameArr = null;
+    int numInWord = 0;
+    bool gameRunning = true;
 
     public void Run()
     {
-        DisplayBody();
+        // DisplayBody();
         Game();
     }
 
     public void Game()
     {
+        Console.Clear();
+
         string[] words = { "compete", "sector", "explain", "passage", "inflate", "patient", "pillow" };
 
         Random rand = new Random();
-        int wordNum = rand.Next(0, 8);
+        int wordNum = rand.Next(0, 7);
+        System.Console.WriteLine($"Int wordNum = {wordNum}"); // For testing only, get rid of for final code
 
         string gameWord = words[wordNum];
+        // string gameWord = "pillow";
 
         // changes string array to match the number of letters in char array
         Array.Resize(ref gameArr, gameWord.Length);
@@ -31,13 +37,17 @@ public class ProgramUI
         for (int i = 0; i < gameArr.Length; i++)
         {
             blankGameArr[i] = "_";
-            System.Console.Write(blankGameArr[i]);
+            System.Console.Write($"{blankGameArr[i]} ");
         }
 
-        System.Console.WriteLine("Guess a letter:");
-        string userGuess = Console.ReadLine();
+        while (gameRunning)
+        {
 
-        CheckForLetter(userGuess, gameArr);
+            System.Console.WriteLine("Guess a letter:");
+            string userGuess = Console.ReadLine();
+
+            CheckForLetter(userGuess, gameArr);
+        }
 
     }
 
@@ -48,30 +58,69 @@ public class ProgramUI
 
     }
 
-    public void BlankDisplay(int indexLetter, string letterAnswer)
+    public void BlankDisplay()
     {
-        blankGameArr[indexLetter] = letterAnswer;
-
         for (int i = 0; i < gameArr.Length; i++)
         {
-            System.Console.WriteLine(blankGameArr[i]);
+            System.Console.Write($"{blankGameArr[i]} ");
         }
+    }
+    public void BlankDisplayUpdate(int indexLetter, string letterAnswer)
+    {
+        blankGameArr[indexLetter] = letterAnswer;
     }
 
     public void CheckForLetter(string guess, string[] arr)
     {
+        bool incorrectAnswer = true;
+        int incorrectGuess = 0;
+        // while (incorrectAnswer)
+        // {
         for (int i = 0; i < arr.Length; i++)
         {
-            if (arr[i] == guess)
+            if (arr[i] == guess && blankGameArr[i] == "_")
             {
-                BlankDisplay(i, guess);
-                goto DoneWithForLoop;
+                Console.Clear();
+
+                BlankDisplayUpdate(i, guess);
+                CorrectAnswer();
+                numInWord++;
             }
-            else
-            {
-            }
+            else { incorrectGuess++; }
         }
-    DoneWithForLoop:
+        if (incorrectGuess == arr.Length)
+        {
+            Console.Clear();
+
+            IncorrectAnswer();
+        }
+        else
+        {
+        }
+
+        if (numInWord == arr.Length)
+        {
+            Console.Clear();
+
+            BlankDisplay();
+            System.Console.WriteLine("\nCongrats you got the word!");
+            gameRunning = false;
+        }
+        else
+        {
+            BlankDisplay();
+        }
+
+        incorrectAnswer = false;
+        // }
+    }
+    public void CorrectAnswer()
+    {
         System.Console.WriteLine("Correct Guess!");
     }
+    public void IncorrectAnswer()
+    {
+        System.Console.WriteLine("Sorry! wrong answer");
+    }
+
 }
