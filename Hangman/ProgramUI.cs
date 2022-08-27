@@ -1,17 +1,12 @@
 public class ProgramUI
 {
-    string test = "This is a test";
+
+    string[]? blankGameArr = null;
+
     public void Run()
     {
-        test1();
-        // DisplayBody();
-        // Game();
-    }
-
-    public void test1()
-    {
-        System.Console.WriteLine(test);
-
+        DisplayBody();
+        Game();
     }
 
     public void Game()
@@ -31,7 +26,6 @@ public class ProgramUI
             gameArr[i] = new string(gameWord[i], 1);
         }
 
-        string[]? blankGameArr = null;
         Array.Resize(ref blankGameArr, gameArr.Length);
         // Changes the letters in words to "_" for player to guess and fill in
         for (int i = 0; i < gameArr.Length; i++)
