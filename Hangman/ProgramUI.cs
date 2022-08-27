@@ -2,6 +2,7 @@ public class ProgramUI
 {
 
     string[]? blankGameArr = null;
+    string[]? gameArr = null;
 
     public void Run()
     {
@@ -18,7 +19,6 @@ public class ProgramUI
 
         string gameWord = words[wordNum];
 
-        string[]? gameArr = null;
         // changes string array to match the number of letters in char array
         Array.Resize(ref gameArr, gameWord.Length);
         for (int i = 0; i < gameWord.Length; i++)
@@ -31,7 +31,7 @@ public class ProgramUI
         for (int i = 0; i < gameArr.Length; i++)
         {
             blankGameArr[i] = "_";
-            System.Console.WriteLine($"blankGameArr: {blankGameArr[i]}");
+            System.Console.Write(blankGameArr[i]);
         }
 
         System.Console.WriteLine("Guess a letter:");
@@ -48,9 +48,14 @@ public class ProgramUI
 
     }
 
-    public void BlankDisplay()
+    public void BlankDisplay(int indexLetter, string letterAnswer)
     {
+        blankGameArr[indexLetter] = letterAnswer;
 
+        for (int i = 0; i < gameArr.Length; i++)
+        {
+            System.Console.WriteLine(blankGameArr[i]);
+        }
     }
 
     public void CheckForLetter(string guess, string[] arr)
@@ -59,13 +64,11 @@ public class ProgramUI
         {
             if (arr[i] == guess)
             {
-                arr[i] = guess;
-                // BlankDisplay(arr[i]);
+                BlankDisplay(i, guess);
                 goto DoneWithForLoop;
             }
             else
             {
-                System.Console.WriteLine("Sorry wrong answer!");
             }
         }
     DoneWithForLoop:
