@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S32iPWbyzRQtfPY9QsPemaP2vAE4ADXUgcB5l8LPvww2fqPbaeXtmoco1Pl3uj5AFgKfy68/Q5A8ucWUkmbiyA==",
+  "dgSpecHash": "iRmoom8UWkWFzZlv0ukFH0g6NP2ToszYxw7ReM3iON4QNyZ/8oqg7fib0P8K3Gs/N2Vf85ScPiLSdqiVa3FjFg==",
   "success": true,
-  "projectFilePath": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\Hangman.csproj",
+  "projectFilePath": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\Hangman\\Hangman.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

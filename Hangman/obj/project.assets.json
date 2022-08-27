@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\Hangman.csproj",
+      "projectUniqueName": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\Hangman\\Hangman.csproj",
       "projectName": "Hangman",
-      "projectPath": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\Hangman.csproj",
+      "projectPath": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\Hangman\\Hangman.csproj",
       "packagesPath": "C:\\Users\\clarf\\.nuget\\packages\\",
-      "outputPath": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\obj\\",
+      "outputPath": "C:\\ElevenFiftyAcademy149\\codingFoundations\\assignments\\Hangman\\Hangman\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\clarf\\AppData\\Roaming\\NuGet\\NuGet.Config"
